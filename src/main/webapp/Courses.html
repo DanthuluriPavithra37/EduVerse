@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduVerse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+      <div class="logo ">EduVerse</div>
+      <ul class="navlinks">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="AboutUs.html">About Us</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>
+        <li><a href="#" onclick="confirmLogout()">Logout</a></li>
+        <li>
+        <input type="text" id="searchBar" placeholder="Search courses...">
+        <button onclick="searchCourses()">Search</button>
+        </li>      
+        </ul>
+    </nav>
+    <marquee> 
+        <img src="Images/JavaLogo.jpg">
+        <img src="Images/PythonLogo.jpg">
+        <img src="Images/CLogo.jpg">
+        <img src="Images/C++Logo.jpg">
+        <img src="Images/HTMLLogo.jpg">
+        <img src="Images/CSSLogo.jpg">
+        <img src="Images/JSLogo.jpg">
+        <img src="Images/AILogo.jpg">
+        <img src="Images/MLLogo.png">
+    </marquee>
+    <div id="courses">
+        <div id="java">
+        <img src="Images/JavaCourse.jpg" alt="java">
+        <h2>Java Programming</h2>
+        <p>Price: 499rs</p>
+        <a href="CourseDetails.html?course=java"><button id="explore">Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/PythonCourse.jpg" alt="python">
+            <h2>Python Programming</h2>
+        <p>Price: 499rs</p>
+        <a href="CourseDetails.html?course=python"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/CCourse.jpg" alt="C">
+            <h2>C Programming</h2>
+        <p>Price: 499rs</p>
+        <a href="CourseDetails.html?course=c"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/C++.jpg" alt="C++">
+            <h2>C++ Programming</h2>
+        <p>Price: 499rs</p>
+        <a href="CourseDetails.html?course=cpp"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/HTMLCSSJSCourse.png" alt="HTMLCSS&JS">
+            <h2>HTML, CSS & JS</h2>
+        <p>Price: 999rs</p>
+        <a href="CourseDetails.html?course=htmlcssjs"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/AICourse.jpeg" alt="AI">
+            <h2>Artificial Intelligence</h2>
+        <p>Price: 1499rs</p>
+        <a href="CourseDetails.html?course=ai"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/MLCourse.jpg" alt="ML">
+            <h2>Machine Learning</h2>
+        <p>Price: 1499rs</p>
+        <a href="CourseDetails.html?course=ml"><button id="explore" >Explore</button></a>
+        </div>
+        <div id="java">
+            <img src="Images/UI-UXCourse.jpg" alt="UIUX">
+            <h2>UI/UX Design</h2>
+        <p>Price: 999rs</p>
+        <a href="CourseDetails.html?course=uiux"><button id="explore" >Explore</button></a>
+        </div>
+    </div>
+   
+   <script>
+  function confirmLogout() {
+    if (confirm("Are you sure you want to logout?")) {
+      window.location.href = "logout";
+    }
+  }
+  function searchCourses() {
+	    let input = document.getElementById("searchBar").value.toLowerCase();
+	    let courses = document.querySelectorAll("#courses > div");
+
+	    courses.forEach(course => {
+	        let title = course.querySelector("h2").textContent.toLowerCase();
+	        if (title.includes(input)) {
+	            course.style.display = "block";
+	        } else {
+	            course.style.display = "none";
+	        }
+	    });
+	}
+</script>
+
+</body>
+</html>
+   
+</body>
+</html>

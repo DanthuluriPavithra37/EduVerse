@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Details | EduVerse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="coursedetails">
+  <nav class="navbar">
+    <div class="logo">EduVerse</div>
+    <ul class="navlinks">
+      <li><a href="Courses.html">Courses</a></li>
+      <li><a href="AboutUs.html">About Us</a></li>
+      <li><a href="ContactUs.html">Contact Us</a></li>
+      <li><a href="#" onclick="confirmLogout()">Logout</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section class="course-card" id="course-details">
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 EduVerse. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const courses = {
+      java: {
+        title: "Java Programming",
+        image: "Images/Java.jpg",
+        description: "Learn Java from basics to advanced concepts like OOP, file handling, collections, and more.",
+        learn: [
+          "Core Java Syntax & Structure",
+          "Object-Oriented Programming",
+          "File I/O & Exception Handling",
+          "Java Collections Framework",
+          "Java GUI (Swing/JavaFX)",
+          "Mini Projects & Real-world Examples"
+        ],
+        duration: "8 Weeks",
+        price: "₹499"
+      },
+      python: {
+        title: "Python Programming",
+        image: "Images/Python.jpg",
+        description: "Master Python for data science, web development, and automation.",
+        learn: [
+          "Python Basics & Data Structures",
+          "Functions & Modules",
+          "Object-Oriented Python",
+          "File Handling",
+          "Intro to Pandas & NumPy",
+          "Small Projects"
+        ],
+        duration: "6 Weeks",
+        price: "₹499"
+      },
+      c: {
+    	  title: "C Programming",
+    	  image: "Images/C.jpg",
+    	  description: "Learn the foundation of programming with C, the language that powers operating systems, embedded systems, and performance-critical applications.",
+    	  learn: [
+    	    "C Syntax & Data Types",
+    	    "Control Statements & Loops",
+    	    "Functions & Recursion",
+    	    "Pointers & Memory Management",
+    	    "Structures & Unions",
+    	    "File Handling in C"
+    	  ],
+    	  duration: "6 Weeks",
+    	  price: "₹499"
+    	},
+    	cpp: {
+    	  title: "C++ Programming",
+    	  image: "Images/C++.jpg",
+    	  description: "Master C++ to build object-oriented applications, competitive programming solutions, and system-level projects.",
+    	  learn: [
+    	    "C++ Basics & Syntax",
+    	    "Object-Oriented Programming Concepts",
+    	    "Constructors & Destructors",
+    	    "Operator Overloading",
+    	    "Templates & STL",
+    	    "File Handling in C++"
+    	  ],
+    	  duration: "7 Weeks",
+    	  price: "₹499"
+    	},
+    	htmlcssjs: {
+    		  title: "HTML, CSS & JavaScript",
+    		  image: "Images/HTMLCSS&JS.png",
+    		  description: "Learn the fundamentals of frontend development and build interactive, responsive websites using HTML5, CSS3, and JavaScript.",
+    		  learn: [
+    		    "HTML5 Elements, Forms & Semantic Tags",
+    		    "CSS Selectors, Styling & Box Model",
+    		    "Flexbox & Grid Layouts",
+    		    "Responsive Design with Media Queries",
+    		    "JavaScript Basics (Variables, Data Types, Operators)",
+    		    "DOM Manipulation & Events",
+    		    "Functions & ES6 Features",
+    		    "Mini Website Project (HTML, CSS & JS)"
+    		  ],
+    		  duration: "6 Weeks",
+    		  price: "₹999"
+    		},
+         ai: {
+    	  title: "Artificial Intelligence",
+    	  image: "Images/AI.jpg",
+    	  description: "Dive into the world of Artificial Intelligence with concepts, algorithms, and applications in real-world problem solving.",
+    	  learn: [
+    	    "Introduction to AI & Intelligent Agents",
+    	    "Search Algorithms",
+    	    "Knowledge Representation",
+    	    "Machine Learning Basics",
+    	    "Natural Language Processing",
+    	    "AI Applications & Projects"
+    	  ],
+    	  duration: "10 Weeks",
+    	  price: "₹1499"
+    	},
+
+    	ml: {
+    	  title: "Machine Learning",
+    	  image: "Images/ML.jpg",
+    	  description: "Learn how machines learn from data with supervised, unsupervised, and deep learning approaches.",
+    	  learn: [
+    	    "Introduction to Machine Learning",
+    	    "Supervised Learning (Regression, Classification)",
+    	    "Unsupervised Learning (Clustering, Dimensionality Reduction)",
+    	    "Model Evaluation & Tuning",
+    	    "Introduction to Neural Networks",
+    	    "Hands-on ML Projects"
+    	  ],
+    	  duration: "10 Weeks",
+    	  price: "₹1499"
+    	},
+        uiux: {
+        title: "UI/UX Design",
+        image: "Images/UI-UXCourse.jpg",
+        description: "Design modern, user-friendly interfaces and improve user experiences.",
+        learn: [
+          "Principles of UX Design",
+          "UI Wireframing & Prototyping",
+          "Design Thinking Process",
+          "Figma/Adobe XD Basics",
+          "Usability Testing"
+        ],
+        duration: "6 Weeks",
+        price: "₹999"
+      }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseKey = urlParams.get("course");
+
+    const courseDetails = document.getElementById("course-details");
+
+    if (courses[courseKey]) {
+      const c = courses[courseKey];
+      courseDetails.innerHTML = `
+        <img src="${c.image}" alt="${c.title}" class="course-image">
+        <div class="course-content">
+          <h1 class="course-title">${c.title}</h1>
+          <p class="course-description">${c.description}</p>
+
+          <div class="course-info">
+            <p><strong>What you'll learn:</strong></p>
+            <ul>${c.learn.map(item => `<li>${item}</li>`).join("")}</ul>
+            <p><strong>Duration:</strong> ${c.duration}</p>
+            <p><strong>Price:</strong> ${c.price}</p>
+          </div>
+
+          <a href="#" class="enroll-btn">Enroll Now</a>
+        </div>
+      `;
+    } else {
+      courseDetails.innerHTML = `<p>Course not found.</p>`;
+    }
+    
+    function confirmLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          window.location.href = "logout"; 
+        }
+      }
+  </script>
+</body>
+</html>
